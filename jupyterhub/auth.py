@@ -132,9 +132,7 @@ class Authenticator(LoggingConfigurable):
         if not self.validate_username(username):
             self.log.warning("Disallowing invalid username %r.", username)
             return
-
-        whitelist_pass = yield gen.maybe_future(self.check_whitelist(username))
-        if whitelist_pass:
+        if self.check_whitelist(username):
             return username
         else:
             self.log.warning("User %r not in whitelist.", username)
