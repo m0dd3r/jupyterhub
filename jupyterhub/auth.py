@@ -312,15 +312,15 @@ class LocalAuthenticator(Authenticator):
 
         For Linux, the default value is:
 
-            ['adduser', '-q', '--gecos', '""', '--disabled-password']
+            ['adduser', '--gecos', '""', '--disabled-password']
 
         To specify a custom home directory, set this to:
 
-            ['adduser', '-q', '--gecos', '""', '--home', '/customhome/USERNAME', '--disabled-password']
+            ['adduser', '--gecos', '""', '--home', '/customhome/USERNAME', '--disabled-password']
 
         This will run the command:
 
-            adduser -q --gecos "" --home /customhome/river --disabled-password river
+            adduser --gecos "" --home /customhome/river --disabled-password river
 
         when the user 'river' is created.
         """
@@ -336,7 +336,7 @@ class LocalAuthenticator(Authenticator):
             return ['pw', 'useradd', '-m']
         else:
             # This appears to be the Linux non-interactive adduser command:
-            return ['adduser', '-q', '--gecos', '""', '--disabled-password']
+            return ['adduser', '--gecos', '""', '--disabled-password']
 
     group_whitelist = Set(
         help="""
